@@ -1,7 +1,7 @@
 
 
 body {
-    background-color: slateblue;
+    background-color: #f4eee0;
     padding: 48px;
     margin: 0;
     display: flex;
@@ -21,7 +21,8 @@ body {
 .sketch {
     width: 960px;
     padding: 24px;
-    background-color: lightgray;
+    background-color: pink;
+    border-radius: 20px;
     display: flex;
     justify-content: space-between;
     gap: 48px;
@@ -48,12 +49,13 @@ body {
     font-size: 24px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
-    color: tomato;
+    color: royalblue;
 }
 
 .canvas {
     padding: 0;
     background-color: white;
+    border-radius: 10px;
     width: 600px;
     height: 600px;
 }
@@ -73,6 +75,7 @@ body {
 
 .clear {
     padding: 8px 24px;
+    font-size: large;
     border-radius: 10px;
     background-color: blueviolet;
 }
