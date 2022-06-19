@@ -45,11 +45,23 @@ body {
     gap: 16px;
 }
 
-.slideinfo {
+.rainbow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.slideinfo, .toggle {
     font-size: 24px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
     color: royalblue;
+}
+
+.toggle {
+    text-align: center;
 }
 
 .canvas {
@@ -73,9 +85,12 @@ body {
     background-color: black;
 }
 
-.clear {
+.clear, .black {
     padding: 8px 24px;
     font-size: large;
     border-radius: 10px;
     background-color: blueviolet;
 }
+
+
+

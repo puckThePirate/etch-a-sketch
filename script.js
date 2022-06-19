@@ -4,17 +4,20 @@ const ranges = document.querySelector('.ranges')
 const button = document.querySelector('.clear');
 const canvas = document.querySelector('.canvas');
 const clear = document.querySelector('.clear');
+const black = document.querySelector('.black');
+
+let color = 0;
 
 size.classList.add('size');
 size.textContent = `Grid-Size: ${values.value} X ${values.value}`;
 size.style.cssText = "color: royalblue;";
 ranges.appendChild(size);
 
-const ini = 600/16;
-for(let i=0; i< 16;i++){    // builds inital grid
+const ini = 600 / 16;
+for (let i = 0; i < 16; i++) { // builds inital grid
     const row = document.createElement('div');
     row.classList.add('row');
-    for(let j=0;j<16;j++){
+    for (let j = 0; j < 16; j++) {
         let pixel = document.createElement('div');
         pixel.classList.add('pixel');
         pixel.style.width = ini + "px";
@@ -31,18 +34,18 @@ function createrange(e) {
     size.textContent = `Grid-Size: ${values.value} X ${values.value}`;
     ranges.appendChild(size);
 
-    const len = 600/e.target.value;
+    const len = 600 / e.target.value;
 
     let child = canvas.lastElementChild; // removes previous grid 
-    while(child) {
+    while (child) {
         canvas.removeChild(child);
         child = canvas.lastElementChild;
     }
 
-    for(let i=0; i< e.target.value;i++){    // builds new grid
+    for (let i = 0; i < e.target.value; i++) { // builds new grid
         const row = document.createElement('div');
         row.classList.add('row');
-        for(let j=0;j<e.target.value;j++){
+        for (let j = 0; j < e.target.value; j++) {
             let pixel = document.createElement('div');
             pixel.classList.add('pixel');
             pixel.style.width = len + "px";
@@ -56,7 +59,12 @@ function createrange(e) {
 }
 
 function paint(e) {
-    e.target.classList.add('hovered');
+    if (color === 0)
+        e.target.classList.add('hovered');
+    else {
+        let col = Math.floor(Math.random() * 16777215).toString(16);
+        e.target.style.backgroundColor = '#' + col;
+    }
 }
 
 function erase() {
@@ -64,16 +72,16 @@ function erase() {
     const ss = values.value;
 
     let child = canvas.lastElementChild; // removes previous grid 
-    while(child) {
+    while (child) {
         canvas.removeChild(child);
         child = canvas.lastElementChild;
     }
 
-    let newlen = 600/ss;
-    for(let i=0; i< ss;i++){    // builds new grid
+    let newlen = 600 / ss;
+    for (let i = 0; i < ss; i++) { // builds new grid
         const row = document.createElement('div');
         row.classList.add('row');
-        for(let j=0;j<ss;j++){
+        for (let j = 0; j < ss; j++) {
             let pixel = document.createElement('div');
             pixel.classList.add('pixel');
             pixel.style.width = newlen + "px";
@@ -87,5 +95,19 @@ function erase() {
 
 }
 
+function raintoggle(e) {
+    if (color === 0) {
+        erase();
+        color = 1;
+        e.target.textContent = "Rainbow";
+    }
+    else {
+        erase();
+        color = 0;
+        e.target.textContent = "Black";
+    }
+}
+
 values.addEventListener('input', createrange);
-clear.addEventListener('click',erase);
+clear.addEventListener('click', erase);
+black.addEventListener('click', raintoggle);
