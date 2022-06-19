@@ -64,5 +64,15 @@ body {
 
 .pixel {
     margin: 0;
-    border: .5px solid black;
+   
+}
+
+.hovered {
+    background-color: black;
+}
+
+.clear {
+    padding: 8px 24px;
+    border-radius: 10px;
+    background-color: blueviolet;
 }
