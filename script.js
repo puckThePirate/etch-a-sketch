@@ -5,10 +5,9 @@ const button = document.querySelector('.clear');
 const canvas = document.querySelector('.canvas');
 const clear = document.querySelector('.clear');
 
-const ss = values.value;
-
 size.classList.add('size');
 size.textContent = `Size: ${values.value}`;
+size.style.cssText = "color: royalblue;";
 ranges.appendChild(size);
 
 const ini = 600/16;
@@ -31,6 +30,7 @@ function createrange(e) {
 
     size.textContent = `Size: ${e.target.value}`;
     ranges.appendChild(size);
+
     const len = 600/e.target.value;
 
     let child = canvas.lastElementChild; // removes previous grid 
@@ -61,12 +61,14 @@ function paint(e) {
 
 function erase() {
 
+    const ss = values.value;
+    
     let child = canvas.lastElementChild; // removes previous grid 
     while(child) {
         canvas.removeChild(child);
         child = canvas.lastElementChild;
     }
-    
+
     let newlen = 600/ss;
     for(let i=0; i< ss;i++){    // builds new grid
         const row = document.createElement('div');
